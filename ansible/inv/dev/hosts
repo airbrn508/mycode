@@ -4,4 +4,7 @@ fry ansible_host=10.10.2.4 ansible_ssh_user=fry
 zoidberg ansible_host=10.10.2.5 ansible_user=zoidberg
 
 [planet-express:vars]
-engines=darkmatter
+enginetype=darkmatter
+weapontype="rubber chicken"
+pecargo=pizza
+shipprice=22000

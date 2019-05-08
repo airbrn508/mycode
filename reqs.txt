@@ -1,0 +1,15 @@
+systemd-python==234
+texttable==0.9.1
+tinyrpc==1.0.1
+Twisted==17.9.0
+ufw==0.36
+unattended-upgrades==0.1
+urllib3==1.24.3
+virtualenv==16.5.0
+warlock==1.2.0
+webencodings==0.5
+WebOb==1.8.5
+websocket-client==0.56.0
+wrapt==1.11.1
+youtube-dl==2018.3.14
+zope.interface==4.3.2

@@ -1,0 +1,15 @@
+---
+- name: validate other playbooks
+  hosts: planet-express
+  gather_facts: yes
+
+  tasks:
+  - name: read a file and save results
+    command: cat ~/{{ input }}
+    register: readfile
+
+  - name: show contents of the file
+    debug:
+      var: readfile.stdout
+
+
