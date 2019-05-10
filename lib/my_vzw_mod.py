@@ -14,7 +14,7 @@ message:
     description: The output message that our module will produce
 '''
 
-from ansible_module_utils.basic import AnsibleModule
+from ansible.module_utils.basic import AnsibleModule
 
 def run_module():
     module_args = dict(
@@ -51,7 +51,7 @@ def run_module():
 
 
 def main():
-    run_module():
+    run_module()
 
 if __name__ == '__main__':
     main()
