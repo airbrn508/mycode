@@ -1,0 +1,56 @@
+---
+- name: learning error handling
+  hosts: planet-express
+  gather_facts: yes
+
+  tasks:
+  - name: PRECHECK PHASE
+    block:
+    - debug:
+        msg: "I am a precheck step"
+
+    - debug:
+        msg: " I am another precheck step"
+
+    - command: "/bin/true"  # this always retuens a false, which forces a fail
+
+    rescue:
+    - fail:
+        msg: "The precheck phase FAILED. Exiting"
+
+  - name: MAINTENANCE PHASE
+    block:
+    - debug:
+        msg: "I am a step that makes a change"
+
+    - debug:
+        msg: " I am another step that makes a change"
+
+    - command: "/bin/true"
+
+    rescue:
+    - debug:
+        msg: "The maintenance phase has FAILED. ROLLING BACK!"
+
+    - debug:
+        msg: "I am a step that undoes the first step in the maintenance block"
+
+    - fail:
+        msg: "The maintenacne phase has been ROLLED BACK. EXITING!"
+
+  - name: POST-CHECK PHASE
+    block:
+    - debug:
+        msg: "I am a step that checks if changes were successful"
+
+    - command: "/bin/true"
+
+    rescue:
+    - debug:
+        msg: "The post-check phase has FAILED. ROLLING BACK!"
+
+    - debug:
+        msg: "I am a step that undoes the first step in the post-check block"
+
+    - fail:
+        msg: "The post-check phase has been ROLLED BACK. EXITING!"
